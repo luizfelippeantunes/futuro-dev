@@ -1,0 +1,2 @@
+br\futurodev\primeiraapi\models\ProdutoModel.class
+br\futurodev\primeiraapi\repositories\produtoRepository.class
