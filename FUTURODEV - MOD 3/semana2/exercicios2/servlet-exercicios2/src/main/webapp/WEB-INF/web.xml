@@ -6,12 +6,22 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>Servlet - Exercícios 2</servlet-name>
-    <servlet-class>br.com.futurodev.servlet.ServletExercicios2</servlet-class>
+    <servlet-name>M3S02E01</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.M3S02E01</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>Servlet - Exercícios 2</servlet-name>
-    <url-pattern>/servlet.do</url-pattern>
+    <servlet-name>M3S02E01</servlet-name>
+    <url-pattern>/M3S02E01</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>M3S02E02</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.M3S02E02</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>M3S02E02</servlet-name>
+    <url-pattern>/M3S02E02</url-pattern>
   </servlet-mapping>
 </web-app>
