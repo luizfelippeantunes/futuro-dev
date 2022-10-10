@@ -24,4 +24,44 @@
     <servlet-name>M3S02E02</servlet-name>
     <url-pattern>/M3S02E02</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Formulario Notas</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.FormularioNotas</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Formulario Notas</servlet-name>
+    <url-pattern>/M3S02E03</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Cadastro Notas</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.CadastroNotas</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Cadastro Notas</servlet-name>
+    <url-pattern>/M3S02E04</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>M3S02E04</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.M3S02E04</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>M3S02E04</servlet-name>
+    <url-pattern>/cadastro</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>M3S02E03</servlet-name>
+    <servlet-class>br.com.futurodev.servlet.M3S02E03</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>M3S02E03</servlet-name>
+    <url-pattern>/notas</url-pattern>
+  </servlet-mapping>
 </web-app>
