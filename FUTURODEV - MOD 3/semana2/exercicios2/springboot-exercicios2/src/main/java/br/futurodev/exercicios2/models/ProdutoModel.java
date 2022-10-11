@@ -13,6 +13,7 @@ public class ProdutoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produto")
     private Long id;
     private String descricao;
+    private double estoque;
     private double precoUnitario;
 
     @Override
@@ -27,6 +28,14 @@ public class ProdutoModel implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public double getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(double estoque) {
+        this.estoque = estoque;
     }
 
     public Long getId() {
