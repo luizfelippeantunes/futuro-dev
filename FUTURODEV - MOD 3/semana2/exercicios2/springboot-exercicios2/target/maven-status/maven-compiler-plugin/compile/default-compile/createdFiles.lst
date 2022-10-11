@@ -1,2 +1,4 @@
-br\futurodev\primeiraapi\models\ProdutoModel.class
-br\futurodev\primeiraapi\repositories\produtoRepository.class
+br\futurodev\exercicios2\models\ProdutoModel.class
+br\futurodev\exercicios2\repositories\produtoRepository.class
+br\futurodev\exercicios2\controllers\GreetingsController.class
+br\futurodev\exercicios2\Application.class

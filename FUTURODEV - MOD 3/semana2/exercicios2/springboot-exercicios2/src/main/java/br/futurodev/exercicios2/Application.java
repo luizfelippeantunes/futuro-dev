@@ -1,4 +1,4 @@
-package br.futurodev.primeiraapi;
+package br.futurodev.exercicios2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        // É a linha principal que roda o projeto Java Spring Boot
         SpringApplication.run(Application.class, args);
-        // TESTE PULL
     }
 }

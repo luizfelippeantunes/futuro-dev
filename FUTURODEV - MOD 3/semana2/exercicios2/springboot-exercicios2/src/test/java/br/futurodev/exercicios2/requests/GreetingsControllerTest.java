@@ -1,4 +1,4 @@
-package br.futurodev.primeiraapi.requests;
+package br.futurodev.exercicios2.requests;
 
 import com.hackerrank.test.utility.Order;
 import com.hackerrank.test.utility.OrderedTestRunner;

@@ -1,7 +1,7 @@
-package br.futurodev.primeiraapi.controllers;
+package br.futurodev.exercicios2.controllers;
 
-import br.futurodev.primeiraapi.models.ProdutoModel;
-import br.futurodev.primeiraapi.repositories.produtoRepository;
+import br.futurodev.exercicios2.models.ProdutoModel;
+import br.futurodev.exercicios2.repositories.produtoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,16 +26,14 @@ public class GreetingsController {
     @RequestMapping(value = "/pessoa/{name}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public String greetingText(@PathVariable String name) {
-        return "Olá " + name + "!";
+        return "Olá " + name + " estamos começando nosso trabalho com Spring Boot!";
     }
 
-    @RequestMapping(value = "/produto/{descricao}", method = RequestMethod.GET)
+    @RequestMapping(value = "/media/{valor1},{valor2}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public String salvar(@PathVariable String descricao) {
-        ProdutoModel produto = new ProdutoModel();
-        produto.setDescricao(descricao);
-        produtoRepository.save(produto); //grava o produto no banco de dados
-        return "Produto " + descricao + " cadastrado com sucesso!";
+    public String salvar(@PathVariable String valor1, @PathVariable String valor2) {
+        Double media = (Double.parseDouble(valor1)+Double.parseDouble(valor2))/2;
+        return "Valor 1 = " + valor1 + ", valor 2 = " + valor2 + ", e a média entre eles é " + media + ".";
     }
 
     @GetMapping(value = "/listaProdutos")

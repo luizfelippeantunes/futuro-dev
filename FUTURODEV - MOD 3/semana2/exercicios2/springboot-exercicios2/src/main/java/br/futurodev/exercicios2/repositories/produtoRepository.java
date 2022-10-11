@@ -1,6 +1,6 @@
-package br.futurodev.primeiraapi.repositories;
+package br.futurodev.exercicios2.repositories;
 
-import br.futurodev.primeiraapi.models.ProdutoModel;
+import br.futurodev.exercicios2.models.ProdutoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

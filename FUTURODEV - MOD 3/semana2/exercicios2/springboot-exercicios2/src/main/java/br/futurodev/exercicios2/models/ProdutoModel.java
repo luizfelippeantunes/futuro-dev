@@ -1,4 +1,4 @@
-package br.futurodev.primeiraapi.models;
+package br.futurodev.exercicios2.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
