@@ -1,6 +1,10 @@
 package br.futurodev.primeiraapi.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +19,10 @@ public class UsuarioModel {
     @Column(unique = true)
     private String senha;
     private String nome;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<TelefoneModel> telefones = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -60,5 +68,13 @@ public class UsuarioModel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<TelefoneModel> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<TelefoneModel> telefones) {
+        this.telefones = telefones;
     }
 }
