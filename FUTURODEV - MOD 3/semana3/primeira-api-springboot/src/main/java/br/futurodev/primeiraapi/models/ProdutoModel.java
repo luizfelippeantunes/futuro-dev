@@ -10,7 +10,7 @@ import java.util.Objects;
 public class ProdutoModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produto")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
     private double precoUnitario;

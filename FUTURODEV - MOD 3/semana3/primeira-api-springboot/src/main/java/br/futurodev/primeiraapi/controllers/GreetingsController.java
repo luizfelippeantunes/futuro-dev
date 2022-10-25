@@ -1,6 +1,6 @@
 package br.futurodev.primeiraapi.controllers;
 
-import br.futurodev.primeiraapi.models.Produto;
+import br.futurodev.primeiraapi.models.ProdutoModel;
 import br.futurodev.primeiraapi.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,25 +32,25 @@ public class GreetingsController {
     @RequestMapping(value = "/produto/{descricao}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public String salvar(@PathVariable String descricao) {
-        Produto produto = new Produto();
-        produto.setDescricao(descricao);
-        produtoRepository.save(produto); //grava o produto no banco de dados
+        ProdutoModel produtoModel = new ProdutoModel();
+        produtoModel.setDescricao(descricao);
+        produtoRepository.save(produtoModel); //grava o produto no banco de dados
         return "Produto " + descricao + " cadastrado com sucesso!";
     }
 
     @GetMapping(value = "/listaProdutos")
     @ResponseBody
     // Retorna os dados no corpo da resposta
-    public ResponseEntity<List<Produto>> listarTodosProdutos() {
-        List<Produto> produtos = produtoRepository.findAll(); //Consulta todos os produtos no banco de dados
-        return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK); //Retorna a lista em JSON
+    public ResponseEntity<List<ProdutoModel>> listarTodosProdutos() {
+        List<ProdutoModel> produtoModels = produtoRepository.findAll(); //Consulta todos os produtos no banco de dados
+        return new ResponseEntity<List<ProdutoModel>>(produtoModels, HttpStatus.OK); //Retorna a lista em JSON
     }
 
     @PostMapping(value = "/produto/salvar") //Mapeia a URL
     @ResponseBody // Retorna os dados no corpo da resposta
-    public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
-        Produto prod = produtoRepository.save(produto);
-        return new ResponseEntity<Produto>(prod, HttpStatus.CREATED);
+    public ResponseEntity<ProdutoModel> salvar(@RequestBody ProdutoModel produtoModel) {
+        ProdutoModel prod = produtoRepository.save(produtoModel);
+        return new ResponseEntity<ProdutoModel>(prod, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/produto/deletar") //Mapeia a URL

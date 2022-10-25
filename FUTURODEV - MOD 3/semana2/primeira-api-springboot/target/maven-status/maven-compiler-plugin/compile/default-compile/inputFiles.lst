@@ -1,3 +1,7 @@
-C:\Users\luiz\IdeaProjects\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\Application.java
-C:\Users\luiz\IdeaProjects\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\models\ProdutoModel.java
-C:\Users\luiz\IdeaProjects\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\controllers\GreetingsController.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\controllers\UsuarioController.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\models\ProdutoModel.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\repositories\ProdutoRepository.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\repositories\UsuarioRepository.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\models\UsuarioModel.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\controllers\GreetingsController.java
+C:\Users\luiz\IdeaProjects\FUTURODEV - MOD 3\semana2\primeira-api-springboot\src\main\java\br\futurodev\primeiraapi\Application.java

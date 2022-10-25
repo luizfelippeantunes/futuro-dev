@@ -1,2 +1,5 @@
+br\futurodev\primeiraapi\repositories\ProdutoRepository.class
+br\futurodev\primeiraapi\repositories\UsuarioRepository.class
+br\futurodev\primeiraapi\controllers\UsuarioController.class
+br\futurodev\primeiraapi\models\UsuarioModel.class
 br\futurodev\primeiraapi\models\ProdutoModel.class
-br\futurodev\primeiraapi\repositories\produtoRepository.class
