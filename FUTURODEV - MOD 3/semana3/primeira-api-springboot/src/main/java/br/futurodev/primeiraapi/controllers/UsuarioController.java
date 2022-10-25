@@ -1,5 +1,6 @@
 package br.futurodev.primeiraapi.controllers;
 
+import br.futurodev.primeiraapi.dto.UsuarioRM;
 import br.futurodev.primeiraapi.models.UsuarioModel;
 import br.futurodev.primeiraapi.services.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/usuario")
@@ -17,15 +19,15 @@ public class UsuarioController {
     private CadastroUsuarioService cadastroUsuarioService;
 
     @PostMapping(value = "/", produces = "application/json")
-    public ResponseEntity<UsuarioModel> cadastrar(@RequestBody UsuarioModel usuarioModel) {
+    public ResponseEntity<UsuarioRM> cadastrar(@RequestBody UsuarioModel usuarioModel) {
         UsuarioModel user = cadastroUsuarioService.salvar(usuarioModel);
-        return new ResponseEntity<UsuarioModel>(user, HttpStatus.CREATED);
+        return new ResponseEntity<UsuarioRM>(toModel(user), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/", produces = "application/json")
-    public ResponseEntity<UsuarioModel> atualizar(@RequestBody UsuarioModel usuarioModel) {
+    public ResponseEntity<UsuarioRM> atualizar(@RequestBody UsuarioModel usuarioModel) {
         UsuarioModel user = cadastroUsuarioService.salvar(usuarioModel);
-        return new ResponseEntity<UsuarioModel>(user, HttpStatus.OK);
+        return new ResponseEntity<UsuarioRM>(toModel(user), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/")
@@ -36,22 +38,29 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/{idUsuario}", produces = "application/json")
-    public ResponseEntity<UsuarioModel> buscar(@PathVariable(value = "idUsuario") Long idUsuario) {
+    public ResponseEntity<UsuarioRM> buscar(@PathVariable(value = "idUsuario") Long idUsuario) {
         UsuarioModel user = cadastroUsuarioService.buscar(idUsuario);
-        return new ResponseEntity<UsuarioModel>(user, HttpStatus.OK);
+        UsuarioRM userRM = toModel(user);
+        return new ResponseEntity<UsuarioRM>(userRM, HttpStatus.OK);
     }
 
     @GetMapping(value = "/buscarPorNome", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<List<UsuarioModel>> buscarPorNome(@RequestParam(name = "nome") String nome) {
-        List<UsuarioModel> usuarioModels = cadastroUsuarioService.buscarPorNome(nome);
-        return new ResponseEntity<List<UsuarioModel>>(usuarioModels, HttpStatus.OK);
+    public ResponseEntity<List<UsuarioRM>> buscarPorNome(@RequestParam(name = "nome") String nome) {
+        List<UsuarioModel> users = cadastroUsuarioService.buscarPorNome(nome);
+        List<UsuarioRM> usersRM = toCollectionModel(users);
+        return new ResponseEntity<List<UsuarioRM>>(usersRM, HttpStatus.OK);
     }
 
-/*    @PostMapping(value = "/", produces = "application/json")
-    public ResponseEntity<UsuarioModel> cadastrar(@RequestBody UsuarioModel usuario){
-        UsuarioModel user = usuarioRepository.save(usuario);
-        return new ResponseEntity<UsuarioModel>(user, HttpStatus.CREATED);
-    }*/
+    private UsuarioRM toModel(UsuarioModel user) {
+        UsuarioRM userRM = new UsuarioRM();
+        userRM.setId(user.getId());
+        userRM.setLogin(user.getLogin());
+        userRM.setNome(user.getNome());
+        return userRM;
+    }
 
+    private List<UsuarioRM> toCollectionModel(List<UsuarioModel> usuariosModels) {
+        return usuariosModels.stream().map(usuarioModel -> toModel(usuarioModel)).collect(Collectors.toList());
+    }
 }

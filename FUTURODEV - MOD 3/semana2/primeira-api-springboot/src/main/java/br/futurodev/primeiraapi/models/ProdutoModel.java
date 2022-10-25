@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "produto")
 @SequenceGenerator(name = "seq_produto", sequenceName = "seq_produto", allocationSize = 1, initialValue = 1)
-public class Produto implements Serializable {
+public class ProdutoModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Produto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Produto that = (Produto) o;
+        ProdutoModel that = (ProdutoModel) o;
         return id.equals(that.id);
     }
 

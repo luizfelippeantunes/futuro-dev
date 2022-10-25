@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Usuario that = (Usuario) o;
+        UsuarioModel that = (UsuarioModel) o;
         return id.equals(that.id);
     }
 

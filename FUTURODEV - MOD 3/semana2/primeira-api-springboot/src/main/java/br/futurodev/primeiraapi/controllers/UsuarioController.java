@@ -1,6 +1,6 @@
 package br.futurodev.primeiraapi.controllers;
 
-import br.futurodev.primeiraapi.models.Usuario;
+import br.futurodev.primeiraapi.models.UsuarioModel;
 import br.futurodev.primeiraapi.services.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,15 +17,15 @@ public class UsuarioController {
     private CadastroUsuarioService cadastroUsuarioService;
 
     @PostMapping(value = "/", produces = "application/json")
-    public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) {
-        Usuario user = cadastroUsuarioService.salvar(usuario);
-        return new ResponseEntity<Usuario>(user, HttpStatus.CREATED);
+    public ResponseEntity<UsuarioModel> cadastrar(@RequestBody UsuarioModel usuarioModel) {
+        UsuarioModel user = cadastroUsuarioService.salvar(usuarioModel);
+        return new ResponseEntity<UsuarioModel>(user, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/", produces = "application/json")
-    public ResponseEntity<Usuario> atualizar(@RequestBody Usuario usuario) {
-        Usuario user = cadastroUsuarioService.salvar(usuario);
-        return new ResponseEntity<Usuario>(user, HttpStatus.OK);
+    public ResponseEntity<UsuarioModel> atualizar(@RequestBody UsuarioModel usuarioModel) {
+        UsuarioModel user = cadastroUsuarioService.salvar(usuarioModel);
+        return new ResponseEntity<UsuarioModel>(user, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/")
@@ -36,16 +36,16 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/{idUsuario}", produces = "application/json")
-    public ResponseEntity<Usuario> buscar(@PathVariable(value = "idUsuario") Long idUsuario) {
-        Usuario user = cadastroUsuarioService.buscar(idUsuario);
-        return new ResponseEntity<Usuario>(user, HttpStatus.OK);
+    public ResponseEntity<UsuarioModel> buscar(@PathVariable(value = "idUsuario") Long idUsuario) {
+        UsuarioModel user = cadastroUsuarioService.buscar(idUsuario);
+        return new ResponseEntity<UsuarioModel>(user, HttpStatus.OK);
     }
 
     @GetMapping(value = "/buscarPorNome", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<List<Usuario>> buscarPorNome(@RequestParam(name = "nome") String nome) {
-        List<Usuario> usuarios = cadastroUsuarioService.buscarPorNome(nome);
-        return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
+    public ResponseEntity<List<UsuarioModel>> buscarPorNome(@RequestParam(name = "nome") String nome) {
+        List<UsuarioModel> usuarioModels = cadastroUsuarioService.buscarPorNome(nome);
+        return new ResponseEntity<List<UsuarioModel>>(usuarioModels, HttpStatus.OK);
     }
 
 /*    @PostMapping(value = "/", produces = "application/json")
