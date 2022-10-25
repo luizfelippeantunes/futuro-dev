@@ -1,15 +1,16 @@
-package br.futurodev.primeiraapi.dto;
+package br.futurodev.primeiraapi.input;
 
-import br.futurodev.primeiraapi.models.TelefoneModel;
+import br.futurodev.primeiraapi.dto.TelefoneRM;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioRM {
+public class UsuarioInput {
 
     private Long id;
     private String nome;
     private String login;
+    private String senha;
 
     private List<TelefoneRM> telefones = new ArrayList<TelefoneRM>();
 
@@ -43,5 +44,13 @@ public class UsuarioRM {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

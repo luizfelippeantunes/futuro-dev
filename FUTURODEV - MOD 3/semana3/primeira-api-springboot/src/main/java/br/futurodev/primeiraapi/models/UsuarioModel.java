@@ -22,7 +22,7 @@ public class UsuarioModel {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TelefoneModel> telefones = new ArrayList<>();
+    private List<TelefoneModel> telefones = new ArrayList<TelefoneModel>();
 
     @Override
     public boolean equals(Object o) {
