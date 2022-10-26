@@ -1,20 +1,16 @@
-package br.futurodev.primeiraapi.dto;
+package br.futurodev.primeiraapi.input;
 
-import br.futurodev.primeiraapi.models.TelefoneModel;
+import br.futurodev.primeiraapi.dto.TelefoneRM;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioRM {
+public class UsuarioInput {
 
     private Long id;
     private String nome;
     private String login;
-
-    private OffsetDateTime dataCadastro;
-
-    private OffsetDateTime dataAtualizacao;
+    private String senha;
 
     private List<TelefoneRM> telefones = new ArrayList<TelefoneRM>();
 
@@ -50,19 +46,11 @@ public class UsuarioRM {
         this.login = login;
     }
 
-    public OffsetDateTime getDataCadastro() {
-        return dataCadastro;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setDataCadastro(OffsetDateTime dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public OffsetDateTime getDataAtualizacao() {
-        return dataAtualizacao;
-    }
-
-    public void setDataAtualizacao(OffsetDateTime dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
