@@ -1,5 +1,6 @@
 package apiCrudPessoa.controllers;
 
+
 import apiCrudPessoa.dto.UsuarioRM;
 import apiCrudPessoa.input.UsuarioInput;
 import apiCrudPessoa.models.Pessoa;
@@ -22,6 +23,18 @@ public class PessoaController {
 
     @GetMapping(value = "/{idPessoa}", produces = "application/json")
     public Pessoa buscar(@PathVariable(value = "idPessoa") Long idPessoa) {
-       return pessoaRepository.findById(idPessoa).get();
+        return pessoaRepository.findById(idPessoa).get();
+    }
+
+    @PutMapping(value = "/", produces = "application/json")
+    public Pessoa atualizar(@RequestBody Pessoa pessoa) {
+        return pessoaRepository.save(pessoa);
+    }
+
+    @DeleteMapping(value = "/")
+    @ResponseBody
+    public ResponseEntity<String> deletar(@RequestParam Long idUsuario) {
+        pessoaRepository.deleteById(idUsuario);
+        return new ResponseEntity<String>("Usuário deletado com sucesso!", HttpStatus.OK);
     }
 }
