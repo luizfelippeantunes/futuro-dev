@@ -1,3 +1,5 @@
+INSERT INTO public.pessoas(cep, cidade, data_nasc, email, estado, hora_nasc, logradouro, nome) VALUES ('88020-360','Floripa','1989/10/31','luiz@senai.com','SC','08:30','Rua no centro','Luiz')
+
 INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste1','10');
 INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste2','20');
 INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste3','30');
