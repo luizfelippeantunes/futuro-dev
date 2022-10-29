@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Repository
 public interface PessoaRepository  extends CrudRepository<Pessoa, Long> {
 
-    @Query(value = "select u from Pessoa u where u.nome like %?1%")
+    @Query(value = "select p from Pessoa p where p.nome like %?1%")
     ArrayList<Pessoa> buscarPorNome(String nome);
 
 }
