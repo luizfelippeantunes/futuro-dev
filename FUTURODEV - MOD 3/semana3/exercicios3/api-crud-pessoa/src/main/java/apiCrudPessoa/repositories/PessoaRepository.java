@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface PessoaRepository  extends CrudRepository<Pessoa, Long> {
+public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 
     @Query(value = "select p from Pessoa p where p.nome like %?1%")
     ArrayList<Pessoa> buscarPorNome(String nome);

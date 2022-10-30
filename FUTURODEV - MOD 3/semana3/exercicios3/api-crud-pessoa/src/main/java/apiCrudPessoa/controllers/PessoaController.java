@@ -3,6 +3,7 @@ package apiCrudPessoa.controllers;
 import apiCrudPessoa.models.Pessoa;
 
 import apiCrudPessoa.repositories.PessoaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping(value = "/pessoa")
 public class PessoaController {
 
+    @Autowired
     private PessoaRepository pessoaRepository;
 
     @PostMapping(value = "/", produces = "application/json")
@@ -35,15 +37,14 @@ public class PessoaController {
 
     @DeleteMapping(value = "/")
     @ResponseBody
-    public ResponseEntity<String> deletar(@RequestParam Long idUsuario) {
-        pessoaRepository.deleteById(idUsuario);
+    public ResponseEntity<String> deletar(@RequestParam Long idPessoa) {
+        pessoaRepository.deleteById(idPessoa);
         return new ResponseEntity<String>("Usuário deletado com sucesso!", HttpStatus.OK);
     }
 
     @GetMapping(value = "/buscarPorNome", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<List<Pessoa>> buscarPorNome(@RequestParam(name = "nome") String nome) {
-        List<Pessoa> pessoas = pessoaRepository.buscarPorNome(nome);
-        return new ResponseEntity<List<Pessoa>>(pessoas, HttpStatus.OK);
+    public List<Pessoa> buscarPorNome(@RequestParam(name = "nome") String nome) {
+        return pessoaRepository.buscarPorNome(nome);
     }
 }
