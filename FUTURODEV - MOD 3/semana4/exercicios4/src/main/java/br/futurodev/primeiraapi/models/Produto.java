@@ -28,7 +28,7 @@ public class Produto implements Serializable {
     @OneToOne
     @JoinColumn(name = "idItemPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_pedido"))
     @JsonBackReference
-    private UsuarioModel item;
+    private ItemPedido item;
 
     @Override
     public boolean equals(Object o) {
@@ -92,11 +92,11 @@ public class Produto implements Serializable {
         this.dataHoraAlteracao = dataHoraAlteracao;
     }
 
-    public UsuarioModel getItem() {
+    public ItemPedido getItem() {
         return item;
     }
 
-    public void setItem(UsuarioModel item) {
+    public void setItem(ItemPedido item) {
         this.item = item;
     }
 }

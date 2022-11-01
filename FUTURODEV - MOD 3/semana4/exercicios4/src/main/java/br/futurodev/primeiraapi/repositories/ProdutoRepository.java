@@ -1,11 +1,14 @@
 package br.futurodev.primeiraapi.repositories;
 
-import br.futurodev.primeiraapi.models.ProdutoModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import br.futurodev.primeiraapi.models.Produto;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
-public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
-    /*@Query(value = "select p from ProdutoModel p where u.descricao like %?1%")
-    ArrayList<UsuarioModel> buscarPorDescricao(String descricao);*/
+public interface ProdutoRepository extends CrudRepository<Produto, Long> {
+    @Query(value = "select p from Produto p where p.descricao like %?1%")
+    ArrayList<Produto> buscarPorDescricao(String descricao);
 }
