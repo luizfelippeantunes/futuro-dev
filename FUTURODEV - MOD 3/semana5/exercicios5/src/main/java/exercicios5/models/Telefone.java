@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "telefones")
-public class TelefoneModel {
+public class Telefone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +18,14 @@ public class TelefoneModel {
     @ManyToOne
     @JoinColumn(name = "idUsuario", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_usuario"))
     @JsonBackReference
-    private UsuarioModel usuario;
+    private Usuario usuario;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        TelefoneModel that = (TelefoneModel) o;
+        Telefone that = (Telefone) o;
         return id.equals(that.id);
     }
 
@@ -58,11 +58,11 @@ public class TelefoneModel {
         this.tipo = tipo;
     }
 
-    public UsuarioModel getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(UsuarioModel usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }

@@ -3,16 +3,19 @@ package exercicios5.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
-public class UsuarioModel {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,7 @@ public class UsuarioModel {
     private String senha;
     private String nome;
 
+    /*
     @CreationTimestamp
     @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))", updatable = false)
     private OffsetDateTime dataCadastro;
@@ -30,17 +34,62 @@ public class UsuarioModel {
     @UpdateTimestamp
     @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))")
     private OffsetDateTime dataAtualizacao;
+     */
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TelefoneModel> telefones = new ArrayList<TelefoneModel>();
+    private List<Telefone> telefones = new ArrayList<Telefone>();
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuarios_role", uniqueConstraints = @UniqueConstraint(
+            columnNames = {"usuario_id", "role_id"}, name = "unique_role_usuario"),
+            joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id",
+                    table = "usuario", foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", table = "role", updatable = false,
+                    foreignKey = @ForeignKey(name = "role_fk", value = ConstraintMode.CONSTRAINT)))
+    private List<Role> roles;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UsuarioModel that = (UsuarioModel) o;
+        Usuario that = (Usuario) o;
         return id.equals(that.id);
     }
 
@@ -81,27 +130,19 @@ public class UsuarioModel {
         this.nome = nome;
     }
 
-    public List<TelefoneModel> getTelefones() {
+    public List<Telefone> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(List<TelefoneModel> telefones) {
+    public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
     }
 
-    public OffsetDateTime getDataCadastro() {
-        return dataCadastro;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setDataCadastro(OffsetDateTime dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public OffsetDateTime getDataAtualizacao() {
-        return dataAtualizacao;
-    }
-
-    public void setDataAtualizacao(OffsetDateTime dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

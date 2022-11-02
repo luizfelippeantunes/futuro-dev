@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -20,7 +21,9 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
                 .select() // retornamos um builder para selecionar os endpoints que devem ser expostos
                 .apis(RequestHandlerSelectors.any()) // especificando o que queremos e quais controladores e endpoints que o springfox irá escanear
                 .build() //montagem do sumário (Docket)
-                .apiInfo(metaData()); //carrega o método com
+                .apiInfo(metaData())
+                .tags(new Tag("Usuários", "Gerencia usuários"),
+                        new Tag("Produtos", "Gerencia produtos"));
     }
 
     private ApiInfo metaData(){
@@ -28,7 +31,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
                 .title("Spring Boot REST API")
                 .description("Nossa primeira Spring Boot REST API")
                 .version("1.0.0")
-                .license("Apacha License Version 2.0")
+                .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .build();
     }
