@@ -23,12 +23,12 @@ public class Pedido implements Serializable {
     @UpdateTimestamp
     @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))")
     private OffsetDateTime dataHoraAlteracao;
-    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Cliente cliente = new Cliente();
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<FormaPagamento> formasPagamento;
+    @OneToOne
+    @JoinColumn(name = "idCliente", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_cliente"))
+    private Cliente cliente;
+    @OneToOne
+    @JoinColumn(name = "idForma", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_forma"))
+    private FormaPagamento formaPagamento;
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<ItemPedido> itensPedido;
@@ -79,19 +79,19 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
     }
 
-    public List<FormaPagamento> getFormasPagamento() {
-        return formasPagamento;
-    }
-
-    public void setFormasPagamento(List<FormaPagamento> formasPagamento) {
-        this.formasPagamento = formasPagamento;
-    }
-
     public List<ItemPedido> getItensPedido() {
         return itensPedido;
     }
 
     public void setItensPedido(List<ItemPedido> itensPedido) {
         this.itensPedido = itensPedido;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 }

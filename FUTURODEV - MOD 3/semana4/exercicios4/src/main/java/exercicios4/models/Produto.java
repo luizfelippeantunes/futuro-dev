@@ -25,10 +25,13 @@ public class Produto implements Serializable {
     @UpdateTimestamp
     @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))")
     private OffsetDateTime dataHoraAlteracao;
+
+    /*
     @OneToOne
     @JoinColumn(name = "idItemPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_pedido"))
     @JsonBackReference
     private ItemPedido item;
+    */
 
     @Override
     public boolean equals(Object o) {
@@ -91,7 +94,7 @@ public class Produto implements Serializable {
     public void setDataHoraAlteracao(OffsetDateTime dataHoraAlteracao) {
         this.dataHoraAlteracao = dataHoraAlteracao;
     }
-
+    /*
     public ItemPedido getItem() {
         return item;
     }
@@ -99,4 +102,5 @@ public class Produto implements Serializable {
     public void setItem(ItemPedido item) {
         this.item = item;
     }
+    */
 }

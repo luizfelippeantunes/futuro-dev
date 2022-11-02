@@ -4,15 +4,14 @@ import exercicios4.models.Cliente;
 import exercicios4.models.FormaPagamento;
 import exercicios4.models.ItemPedido;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoInput {
 
     private Long id;
     private Cliente cliente;
-    private List<FormaPagamento> formasPagamento = new ArrayList<>();
-    private List<ItemPedido> itensPedido = new ArrayList<>();
+    private FormaPagamento formaPagamento;
+    private List<ItemPedido> itensPedido;
 
     public Long getId() {
         return id;
@@ -30,12 +29,12 @@ public class PedidoInput {
         this.cliente = cliente;
     }
 
-    public List<FormaPagamento> getFormasPagamento() {
-        return formasPagamento;
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
     }
 
-    public void setFormasPagamento(List<FormaPagamento> formasPagamento) {
-        this.formasPagamento = formasPagamento;
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public List<ItemPedido> getItensPedido() {

@@ -1,7 +1,5 @@
 package exercicios4.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,11 +12,12 @@ public class FormaPagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    /*
     @ManyToOne
     @JoinColumn(name = "idPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_pedido"))
     @JsonBackReference
     private Pedido pedido;
-
+    */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

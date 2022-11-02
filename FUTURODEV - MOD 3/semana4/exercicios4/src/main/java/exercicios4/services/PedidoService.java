@@ -1,9 +1,14 @@
 package exercicios4.services;
 
+import exercicios4.models.Cliente;
 import exercicios4.models.Pedido;
+import exercicios4.models.Produto;
 import exercicios4.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PedidoService {
@@ -21,5 +26,9 @@ public class PedidoService {
 
     public Pedido buscar(Long idPedido){
         return pedidoRepository.findById(idPedido).get();
+    }
+    @Query()
+    public List<Pedido> buscarPorCliente(String cliente) {
+        return pedidoRepository.buscarPorCliente(cliente);
     }
 }

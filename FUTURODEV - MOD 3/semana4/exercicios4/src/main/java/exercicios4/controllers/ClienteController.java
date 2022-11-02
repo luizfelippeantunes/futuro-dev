@@ -4,9 +4,6 @@ import exercicios4.dto.ClienteRM;
 import exercicios4.input.ClienteInput;
 import exercicios4.models.Cliente;
 import exercicios4.services.ClienteService;
-import exercicios4.services.FormaPagamentoService;
-import exercicios4.services.ItemPedidoService;
-import exercicios4.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,48 +13,46 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/cadastros")
+@RequestMapping(value = "/cliente")
 public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
 
-    @Autowired
-    private FormaPagamentoService formaPagamentoService;
-
-    @Autowired
-    private ItemPedidoService itemPedidoService;
-
-    @Autowired
-    private ProdutoService produtoService;
-
-    @PostMapping(value = "/cliente", produces = "application/json")
+    @PostMapping(value = "/", produces = "application/json")
     public ResponseEntity<ClienteRM> cadastrar(@RequestBody ClienteInput clienteInput) {
         Cliente cliente = clienteService.salvar(toDomainObject(clienteInput));
         return new ResponseEntity<ClienteRM>(toModel(cliente), HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/cliente", produces = "application/json")
+    @PutMapping(value = "/", produces = "application/json")
     public ResponseEntity<ClienteRM> atualizar(@RequestBody ClienteInput clienteInput) {
         Cliente cliente = clienteService.salvar(toDomainObject(clienteInput));
         return new ResponseEntity<ClienteRM>(toModel(cliente), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/cliente")
+    @DeleteMapping(value = "/")
     @ResponseBody
     public ResponseEntity<String> deletar(@RequestParam Long idCliente) {
         clienteService.deletar(idCliente);
         return new ResponseEntity<String>("Usuário deletado com sucesso!", HttpStatus.OK);
     }
 
-    @GetMapping(value = "/cliente/{idUsuario}", produces = "application/json")
+    @GetMapping(value = "/", produces = "application/json")
+    public ResponseEntity<ClienteRM> buscarPorId(@RequestParam(name = "id") Long idCliente) {
+        Cliente cliente = clienteService.buscar(idCliente);
+        ClienteRM clienteRM = toModel(cliente);
+        return new ResponseEntity<ClienteRM>(clienteRM, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{idCliente}", produces = "application/json")
     public ResponseEntity<ClienteRM> buscar(@PathVariable(value = "idCliente") Long idCliente) {
         Cliente cliente = clienteService.buscar(idCliente);
         ClienteRM clienteRM = toModel(cliente);
         return new ResponseEntity<ClienteRM>(clienteRM, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/cliente/buscarPorNome", produces = "application/json")
+    @GetMapping(value = "/buscarPorNome", produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<ClienteRM>> buscarPorNome(@RequestParam(name = "nome") String nome) {
         List<Cliente> clientes = clienteService.buscarPorNome(nome);

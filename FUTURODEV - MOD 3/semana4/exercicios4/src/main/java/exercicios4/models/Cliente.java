@@ -1,7 +1,5 @@
 package exercicios4.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -16,10 +14,12 @@ public class Cliente implements Serializable {
     private String nome;
     private String cpf;
     private String rg;
-    @OneToOne
+    /*@
+    OneToOne
     @JoinColumn(name = "idPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_pedido"))
     @JsonBackReference
     private Pedido pedido;
+     */
 
     @Override
     public boolean equals(Object o) {

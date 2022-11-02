@@ -1,11 +1,15 @@
-INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste1','10');
-INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste2','20');
-INSERT INTO public.produto(descricao, preco_unitario) VALUES ('teste3','30');
+INSERT INTO public.produtos(descricao, preco_compra, preco_venda) VALUES ('Mouse','50','100');
+INSERT INTO public.produtos(descricao, preco_compra, preco_venda) VALUES ('Teclado','100','150');
 
-INSERT INTO public.usuarios(data_atualizacao, data_cadastro, nome, login, senha) VALUES (timezone('utc', CURRENT_TIMESTAMP(0)),timezone('utc', CURRENT_TIMESTAMP(0)),'teste1','teste1','teste1');
-INSERT INTO public.usuarios(data_atualizacao, data_cadastro, nome, login, senha) VALUES (timezone('utc', CURRENT_TIMESTAMP(0)),timezone('utc', CURRENT_TIMESTAMP(0)),'teste2','teste2','teste2');
-INSERT INTO public.usuarios(data_atualizacao, data_cadastro, nome, login, senha) VALUES (timezone('utc', CURRENT_TIMESTAMP(0)),timezone('utc', CURRENT_TIMESTAMP(0)),'teste3','teste3','teste3');
+INSERT INTO public.formas_pagamento(descricao) VALUES ('Dinheiro');
+INSERT INTO public.formas_pagamento(descricao) VALUES ('Cartão');
 
-INSERT INTO public.telefones(numero, tipo, id_usuario) VALUES ('99999999', 'Celular', 1);
-INSERT INTO public.telefones(numero, tipo, id_usuario) VALUES ('33333333', 'Casa', 1);
-INSERT INTO public.telefones(numero, tipo, id_usuario) VALUES ('88888888', 'Celular', 2);
+INSERT INTO public.clientes(nome, cpf, rg) VALUES ('Luiz','111.111.111-11','11111');
+INSERT INTO public.clientes(nome, cpf, rg) VALUES ('Luna','222.222.222-22','22222');
+
+INSERT INTO public.pedidos(id_cliente, id_forma) VALUES ('1','1');
+INSERT INTO public.pedidos(id_cliente, id_forma) VALUES ('2','2');
+
+INSERT INTO public.itens_pedido(id_pedido, id_produto, quantidade, valor_item) VALUES ('1','1','10','1000');
+INSERT INTO public.itens_pedido(id_pedido, id_produto, quantidade, valor_item) VALUES ('1','2','2','300');
+INSERT INTO public.itens_pedido(id_pedido, id_produto, quantidade, valor_item) VALUES ('2','2','5','750');

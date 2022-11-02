@@ -1,7 +1,6 @@
 package exercicios4.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,14 +15,14 @@ public class ItemPedido implements Serializable {
     private Long id;
     private Double quantidade;
     private Double valorItem;
-    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Produto item = new Produto();
+    @OneToOne
+    @JoinColumn(name = "idProduto", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_pedido"))
+    private Produto item;
+
     @ManyToOne
     @JoinColumn(name = "idPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_pedido"))
     @JsonBackReference
     private Pedido pedido;
-
 
     @Override
     public boolean equals(Object o) {
