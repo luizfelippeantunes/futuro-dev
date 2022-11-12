@@ -137,8 +137,9 @@ function defense(atacante, x) {
 // Essa Função deve receber o Nome do Pokemon principal e o nome do Pokemon adversário como parâmetros
 // O pokemon principal deverá aprender um dos movimentos do seu adversário e poderá utilizá-lo
 
-function learn {
+function learn(atacante, oponente) {
     // Falta fazer essa função
+    console.log('Falta implementar')
 }
 
 focus(pikachu)
