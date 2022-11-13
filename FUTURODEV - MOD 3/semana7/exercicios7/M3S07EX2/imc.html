@@ -25,7 +25,25 @@
     
       let imc = peso / (altura * altura)
 
-    alert('Resultado IMC: ' + imc.toFixed(2))
+      if (imc < 16){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa magreza grave.')
+      } else if (imc < 17){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa magreza moderada.')
+      } else if (imc < 18.5){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa magreza leve.')
+      } else if (imc < 25){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa estar saudavel.')
+      } else if (imc < 30){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa sobrepeso.')
+      } else if (imc < 35){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa obesidade grau I.')
+      } else if (imc < 40){
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa obesidade grau II (severa).')
+      } else {
+        alert('Seu IMC: ' + imc.toFixed(2) + ', que representa obesidade grau III (morbida).')
+      }
+
+    //alert('Resultado IMC: ' + imc.toFixed(2))
 
     let pesquisas = [['Idade', idade], ['Altura (metros)', altura], ['Peso (kg)', peso]]
 
