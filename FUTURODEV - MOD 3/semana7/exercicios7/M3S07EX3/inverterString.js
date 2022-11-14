@@ -4,7 +4,7 @@ Por exemplo, a palavra “banana” seria invertida para “ananab”. Utilize a
 troque por outras para verificar se seu algoritmo está funcionando corretamente.
 */
 
-let palavra = 'Luiz'
+let palavra = 'banana'
 let array = []
 let inversa = ''
 
