@@ -7,60 +7,23 @@ Valor esperado no retorno da função: 2.
 let inteiros = [2, 3, 2, 5, 8, 2, 3]
 
 function maisRepetido(lista) {
-
-    let resultado = lista.reduce((acc, val) => {
-        if (!acc[val]) 
-            acc[val] = {
-                "número": val,
-                "quantidade": 1
-            };
-         else 
-            acc[val]["quantidade"]++;
-        
-        return acc;
-        console.log(resultado[0].quantidade)
-    }, {});
-    
-    //console.log(Object.values(resultado));
+    let maisRepetido
+    let repeticoes = 0
+    // lista.sort()
+    for (let i = 0; i < lista.length; i++) {
+        let numero = lista[i]
+        let repeticao = 0
+        for (let i = 0; i < lista.length; i++) {
+            if (lista[i] === numero) {
+                repeticao += 1
+            }
+        }
+        if (repeticao > repeticoes) {
+            repeticoes = repeticao
+            maisRepetido = lista[i]
+        }
+    }
+    return maisRepetido
 }
 
-maisRepetido(inteiros)
-
-/*
-    let valor = lista[0];
-    let length = lista.length
-    let index = []
-    let contador = 0
-    let x = 0
-    let bol
-    while (x < length) {
-        for (let i = 0; i < lista.length; i++) {
-            if (lista[x] === valor) {
-                console.log(lista[x])
-                contador += 1
-            }
-        }
-
-        let obj = {
-            "produto_id": lista[x],
-            "quantidade": contador
-        }
-        if (index.length > 0) {
-            index.forEach(itemLista => {
-                if (itemLista.produto_id === obj.produto_id) {
-                    bol = false;
-                } else {
-                    bol = true;
-                }
-            });
-            if (bol == true) {
-                index.push(obj);
-            }
-        } else if (index.length == 0) {
-            index.push(obj);
-        }
-        x++
-    }
-    console.log(contador)
-    return index;
-*/
+console.log('O número mais repetido é o: ' + maisRepetido(inteiros))
