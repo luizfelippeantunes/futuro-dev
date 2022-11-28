@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <header style="width: 30%; margin:0 auto">
+            <h2>Minha paleta de cores</h2>
+        </header>
+        <main style="width: 30%; margin:0 auto;">
+            <section>
+                <input type="color" id="cor-selecionada">
+                <button id="acao">Adicionar</button>
+            </section>
+
+        </main>
+        <section id="lista-de-cores"></section>
+
+        <script>
+
+
+            const butaoDeAcao = document.getElementById("acao")
+            const corSelecionada = document.getElementById("cor-selecionada")
+            const lista = document.getElementById("lista-de-cores")
+
+            let coresCadastradas = [];
+            const tempStorage = localStorage.getItem("cores")
+            if (tempStorage != null) {
+                coresCadastradas = JSON.parse(tempStorage);
+                for (let cor of coresCadastradas) {
+                    const quadrado = getQuadrado(cor)
+                    lista.prepend(quadrado)
+                }
+            }
+
+            butaoDeAcao.addEventListener("click", () => {
+                const cor = corSelecionada.value
+
+                coresCadastradas.push(cor)
+                const stringList = JSON.stringify(coresCadastradas)
+                localStorage.setItem("cores", stringList)
+                const quadrado = getQuadrado(cor)
+                lista.prepend(quadrado)
+            })
+
+            function getQuadrado(color) {
+
+                const div = document.createElement("div");
+                div.style.backgroundColor = color;
+                div.style.width = "100px"
+                div.style.height = "100px"
+                div.style.float = "left"
+                div.style.margin = "15px"
+                div.style.fontSize = "1.4em"
+                div.innerText = color
+                return div
+            }
+        </script>
+
+    </body>
+</html>

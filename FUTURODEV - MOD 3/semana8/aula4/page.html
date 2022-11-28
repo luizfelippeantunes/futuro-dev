@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Agora foi</h1>
+    <label for=""> Digite seu cep:</label>
+    <input type="text" id="inputCep" required>
+    <button id="btn">Pegar CEP </button>
+
+    <script>
+        let element = document.getElementById('btn')
+        element.addEventListener("click", () => {
+            let meuCep = document.getElementById('inputCep').value
+            pegaCep(meuCep)
+
+        })
+        async function pegaCep(cepp) {
+            console.log(cepp)
+            cep = await (await fetch(`https://brasilapi.com.br/api/cep/v2/${cepp}`)).json()
+            console.log(cep)
+        }
+    </script>
+</body>
+
+</html>

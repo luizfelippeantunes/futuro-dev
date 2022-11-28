@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="./icons/logo-favicon.svg" type="image/x-icon"/>
+        <link rel="stylesheet" href="./styles/style.css" type="text/css">
+        <title>Lab Shopping List</title>
+    </head>
+    <body>
+        <div class="containerPrincipal">
+
+            <div class="header">
+                <img id="imgCabecalho" src="./img/cabeçalho.png" alt="">
+            </div>
+
+            <div class="spacing1">
+                <p id="erroCampoVazio">Digite um item com no mínimo 2 caracteres para adicionar à lista.</p>
+            </div>
+
+            <div class="lista">
+
+                <div class="containerLista1">Insira abaixo os itens da sua lista de compras</div>
+
+                <div class="containerLista2">
+                    <input id="inputItem" type="text" placeholder="Item" minlength="2" maxlength="64">
+                </div>
+
+                <div class="containerLista3">
+                    <button id="btnInserir" onclick="inserir(this)" onkeydown="inserirEnter(this)">Adicionar</button>
+                </div>
+
+                <div class="containerLista4">
+                    <div class="gradeLista">
+                        <ol id="lista"></ol>
+                    </div>
+                </div>
+
+                <div class="containerLista5">
+                    <button id="btnLimparLista" onclick="apagarTodosItens(this)">Limpar Lista</button>
+                </div>
+
+            </div>
+
+            <div class="spacing2">Espaço vazio</div>
+
+            <div class="footer">
+                <p>
+                    Desenvolvido por Luiz Felippe Antunes -
+                    <a href="https://github.com/luizfelippeantunes">Github</a>
+                </p>
+            </div>
+
+            <div class="coluna3">
+                <img id="gif" src="./img/add.gif">
+                <h2>Valor Total:</h2>
+                <h1 id="valorTotal">R$ 0.00</h1>
+            </div>
+
+            <div class="coluna1">
+                <img id="imgLogo" src="./img/logo.png">
+            </div>
+
+        </div>
+
+        <script src="./scripts/script.js"></script>
+    </body>
+</html>

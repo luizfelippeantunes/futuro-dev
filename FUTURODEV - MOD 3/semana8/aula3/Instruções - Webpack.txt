@@ -1,0 +1,27 @@
+https://github.com/carlosgabrielcampo/build_webpack
+
+Utilizando os conceitos de webpack
+- Realize a build do projeto
+- Inicie rodando o comando "npm run start"
+
+Comandos necessários para a instalação:
+
+- "npm init" para a criação dos scripts a serem utilizados
+
+- "npm install --save-dev webpack webpack-cli webpack-dev-server" para realizar a instalação da biblioteca do webpack
+
+- "npm install save-dev html-webpack-plugin" para realizar a instalação do plugin de html
+
+Será considerado bem sucedido caso:
+
+1 - O site esteja rodando na porta localhost:8080
+
+2 - Apareça no console da página a mensagem "funcionou"
+
+Sites de documentação:
+
+Webpack: https://webpack.js.org/
+Plugin HTML: https://www.npmjs.com/package/html-webpack-plugin
+
+Bônus:
+1 - Realizar o mesmo processo para o projeto "Pokemon Game"
