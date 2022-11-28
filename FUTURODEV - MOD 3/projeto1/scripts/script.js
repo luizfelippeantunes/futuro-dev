@@ -71,10 +71,9 @@ function preencherLista() {
             <input type="checkbox" class="itemCompra" id='ck${itens[i].id}' checked="checked" onclick='comprarItem(this, "p"+${itens[i].id})'>
             <p class="produto" id='p${itens[i].id}' style="text-decoration: line-through">${itens[i].conteudo}</p>
             <img id="img"+${itens[i].id} src='./icons/delete.svg' class='iconDel' onclick='apagaItem(${itens[i].id}, "ck"+${itens[i].id}, ${i})'></li>`
-            //document.getElementById(`p${itens[i].id}`).style.textDecoration = "line-through";
         } else {
             listaCompras.innerHTML += `<li class='itemLista' id='${itens[i].id}'>
-            <input type="checkbox" class="itemCompra" id='ck${itens[i].id}' onclick='comprarItem(this)'>
+            <input type="checkbox" class="itemCompra" id='ck${itens[i].id}' onclick='comprarItem(this, "p"+${itens[i].id})'>
             <p class="produto" id='p${itens[i].id}'>${itens[i].conteudo}</p>
             <img id="img"+${itens[i].id} src='./icons/delete.svg' class='iconDel' onclick='apagaItem(${itens[i].id}, "ck"+${itens[i].id}, ${i})'></li>`
         }
@@ -127,18 +126,20 @@ function apagaItem (idLinha, idCheckbox, index){
 function comprarItem (e, idParagrafo) {
     if (e.checked == false){
         valorTotal -= precos.get(e.id)
+        precos.delete(e.id)
+        document.getElementById(`${idParagrafo}`).style.textDecoration = "none";
     }
         else {
+            document.getElementById(`${idParagrafo}`).style.textDecoration = "line-through";
                 do {
                     valorItem = prompt("Digite o valor do item: ")
                     precos.set(e.id, valorItem)
                 } while (valorItem <= 0 || isNaN(valorItem));
             valorTotal += parseFloat(valorItem)
             }
-    document.getElementById(idParagrafo).style.textDecoration = "line-through";
     document.querySelector("#valorTotal").textContent="R$ " + valorTotal.toFixed(2);
     localStorage.setItem("precos", JSON.stringify(Array.from(precos.entries())));
-    localStorage.setItem("valorTotal", JSON.stringify(valorTotal));
+    localStorage.setItem("valorTotal", JSON.stringify(valorTotal));    
 }
 
 function verificaCheck(idCheckbox) {
