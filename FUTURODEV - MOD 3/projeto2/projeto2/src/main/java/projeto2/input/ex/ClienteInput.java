@@ -1,4 +1,4 @@
-package projeto2.input;
+package projeto2.input.ex;
 
 public class ClienteInput {
 

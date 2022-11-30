@@ -1,6 +1,6 @@
 package projeto2.services;
 
-import projeto2.models.Produto;
+import projeto2.models.ex.Produto;
 import projeto2.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;

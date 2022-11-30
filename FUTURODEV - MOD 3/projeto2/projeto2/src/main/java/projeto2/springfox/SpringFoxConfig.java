@@ -25,10 +25,10 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
 
     private ApiInfo metaData(){
         return new ApiInfoBuilder()
-                .title("Spring Boot REST API")
-                .description("Nossa primeira Spring Boot REST API")
+                .title("Projeto 2 - API")
+                .description("Projeto 2 - API LabShoppingList")
                 .version("1.0.0")
-                .license("Apacha License Version 2.0")
+                .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .build();
     }

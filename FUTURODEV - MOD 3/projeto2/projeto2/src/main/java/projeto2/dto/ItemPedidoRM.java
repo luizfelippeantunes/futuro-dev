@@ -1,6 +1,6 @@
 package projeto2.dto;
 
-import projeto2.models.Produto;
+import projeto2.models.ex.Produto;
 
 public class ItemPedidoRM {
 

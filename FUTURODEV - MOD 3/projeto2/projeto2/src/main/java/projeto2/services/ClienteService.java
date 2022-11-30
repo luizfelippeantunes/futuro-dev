@@ -1,6 +1,6 @@
 package projeto2.services;
 
-import projeto2.models.Cliente;
+import projeto2.models.ex.Cliente;
 import projeto2.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,6 @@
 package projeto2.repositories;
 
-import projeto2.models.Produto;
+import projeto2.models.ex.Produto;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

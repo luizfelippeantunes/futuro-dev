@@ -1,36 +1,28 @@
 package projeto2.models;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import projeto2.models.ex.Cliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.OffsetDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produtos_lab")
 public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descricao;
-    private Double precoCompra;
-    private Double precoVenda;
-    @CreationTimestamp
-    @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))", updatable = false)
-    private OffsetDateTime dataHoraCadastro;
-    @UpdateTimestamp
-    @Column(columnDefinition = "timestamp(0) with time zone DEFAULT timezone('utc'::text, CURRENT_TIMESTAMP(0))")
-    private OffsetDateTime dataHoraAlteracao;
 
-    /*
     @OneToOne
-    @JoinColumn(name = "idItemPedido", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_pedido"))
-    @JsonBackReference
-    private ItemPedido item;
-    */
+    @JoinColumn(name = "idCategoria", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_categoria"))
+    private Categoria categoria;
+
+    private String nome;
+
+    private Double valor;
+
+    private boolean status;
 
     @Override
     public boolean equals(Object o) {
@@ -54,52 +46,35 @@ public class Produto implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public Double getPrecoCompra() {
-        return precoCompra;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPrecoCompra(Double precoCompra) {
-        this.precoCompra = precoCompra;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Double getPrecoVenda() {
-        return precoVenda;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setPrecoVenda(Double precoVenda) {
-        this.precoVenda = precoVenda;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    public OffsetDateTime getDataHoraCadastro() {
-        return dataHoraCadastro;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setDataHoraCadastro(OffsetDateTime dataHoraCadastro) {
-        this.dataHoraCadastro = dataHoraCadastro;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
-
-    public OffsetDateTime getDataHoraAlteracao() {
-        return dataHoraAlteracao;
-    }
-
-    public void setDataHoraAlteracao(OffsetDateTime dataHoraAlteracao) {
-        this.dataHoraAlteracao = dataHoraAlteracao;
-    }
-    /*
-    public ItemPedido getItem() {
-        return item;
-    }
-
-    public void setItem(ItemPedido item) {
-        this.item = item;
-    }
-    */
 }

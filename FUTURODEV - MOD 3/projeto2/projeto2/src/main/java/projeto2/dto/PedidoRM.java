@@ -1,8 +1,8 @@
 package projeto2.dto;
 
-import projeto2.models.Cliente;
-import projeto2.models.FormaPagamento;
-import projeto2.models.ItemPedido;
+import projeto2.models.ex.Cliente;
+import projeto2.models.ex.FormaPagamento;
+import projeto2.models.ex.ItemPedido;
 
 import java.util.List;
 

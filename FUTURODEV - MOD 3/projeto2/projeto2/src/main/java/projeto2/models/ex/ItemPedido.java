@@ -1,4 +1,4 @@
-package projeto2.models;
+package projeto2.models.ex;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 

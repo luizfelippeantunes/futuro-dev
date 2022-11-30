@@ -1,6 +1,6 @@
 package projeto2.repositories;
 
-import projeto2.models.Cliente;
+import projeto2.models.ex.Cliente;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

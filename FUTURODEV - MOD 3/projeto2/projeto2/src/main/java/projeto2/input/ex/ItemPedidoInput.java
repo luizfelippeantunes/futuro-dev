@@ -1,6 +1,6 @@
-package projeto2.input;
+package projeto2.input.ex;
 
-import projeto2.models.Produto;
+import projeto2.models.ex.Produto;
 
 public class ItemPedidoInput {
 

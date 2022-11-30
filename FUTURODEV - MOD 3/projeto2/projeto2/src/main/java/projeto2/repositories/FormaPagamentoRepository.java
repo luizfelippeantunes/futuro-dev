@@ -1,6 +1,6 @@
 package projeto2.repositories;
 
-import projeto2.models.FormaPagamento;
+import projeto2.models.ex.FormaPagamento;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
