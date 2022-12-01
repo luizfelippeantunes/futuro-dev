@@ -1,7 +1,7 @@
-package projeto2.services;
+package projeto2.services.ex;
 
 import projeto2.models.ex.ItemPedido;
-import projeto2.repositories.ItemPedidoRepository;
+import projeto2.repositories.ex.ItemPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ItemPedidoService {

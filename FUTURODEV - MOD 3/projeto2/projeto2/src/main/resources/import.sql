@@ -1,3 +1,9 @@
+INSERT INTO public.categorias(nome, descricao) VALUES ('categoria1', 'teste categoria 1')
+INSERT INTO public.categorias(nome, descricao) VALUES ('categoria2', 'teste categoria 2')
+
+INSERT INTO public.produtos_lab(id_categoria, nome, valor, status) VALUES ('1', 'teste1', '10', 'true')
+INSERT INTO public.produtos_lab(id_categoria, nome, valor, status) VALUES ('2', 'teste2', '20', 'false')
+
 INSERT INTO public.produtos(descricao, preco_compra, preco_venda) VALUES ('Mouse','50','100');
 INSERT INTO public.produtos(descricao, preco_compra, preco_venda) VALUES ('Teclado','100','150');
 

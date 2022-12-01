@@ -1,4 +1,4 @@
-package projeto2.dto;
+package projeto2.dto.ex;
 
 public class ClienteRM {
 

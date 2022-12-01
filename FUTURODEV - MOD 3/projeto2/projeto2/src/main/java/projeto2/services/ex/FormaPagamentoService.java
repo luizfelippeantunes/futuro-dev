@@ -1,7 +1,7 @@
-package projeto2.services;
+package projeto2.services.ex;
 
 import projeto2.models.ex.FormaPagamento;
-import projeto2.repositories.FormaPagamentoRepository;
+import projeto2.repositories.ex.FormaPagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 

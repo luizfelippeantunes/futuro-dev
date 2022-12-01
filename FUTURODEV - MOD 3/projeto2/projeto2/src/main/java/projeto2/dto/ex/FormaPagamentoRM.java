@@ -1,11 +1,8 @@
-package projeto2.input;
+package projeto2.dto.ex;
 
-public class CategoriaInput {
+public class FormaPagamentoRM {
 
     private Long id;
-
-    private String nome;
-
     private String descricao;
 
     public Long getId() {
@@ -14,14 +11,6 @@ public class CategoriaInput {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getDescricao() {

@@ -1,4 +1,4 @@
-package projeto2.dto;
+package projeto2.dto.ex;
 
 import projeto2.models.ex.Cliente;
 import projeto2.models.ex.FormaPagamento;

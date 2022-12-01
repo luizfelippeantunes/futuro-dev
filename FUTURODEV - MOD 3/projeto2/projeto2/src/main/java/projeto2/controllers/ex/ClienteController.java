@@ -1,9 +1,9 @@
-package projeto2.controllers;
+package projeto2.controllers.ex;
 
-import projeto2.dto.ClienteRM;
+import projeto2.dto.ex.ClienteRM;
 import projeto2.input.ex.ClienteInput;
 import projeto2.models.ex.Cliente;
-import projeto2.services.ClienteService;
+import projeto2.services.ex.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

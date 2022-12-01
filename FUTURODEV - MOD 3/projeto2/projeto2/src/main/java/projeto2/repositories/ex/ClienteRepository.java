@@ -1,4 +1,4 @@
-package projeto2.repositories;
+package projeto2.repositories.ex;
 
 import projeto2.models.ex.Cliente;
 import org.springframework.data.jpa.repository.Query;

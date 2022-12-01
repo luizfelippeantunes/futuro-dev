@@ -1,7 +1,5 @@
 package projeto2.models;
 
-import projeto2.models.ex.Cliente;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;

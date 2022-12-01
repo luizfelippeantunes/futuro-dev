@@ -1,8 +1,8 @@
-package projeto2.dto;
+package projeto2.input;
 
 import projeto2.models.Categoria;
 
-public class ProdutoRM {
+public class ProdutoInput {
 
     private Long id;
 
@@ -53,5 +53,4 @@ public class ProdutoRM {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
 }

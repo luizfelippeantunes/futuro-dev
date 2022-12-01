@@ -1,9 +1,9 @@
-package projeto2.services;
+package projeto2.services.ex;
 
+import projeto2.models.ex.Produto;
+import projeto2.repositories.ex.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
-import projeto2.models.Produto;
-import projeto2.repositories.ProdutoRepository;
 
 import java.util.List;
 
@@ -20,12 +20,12 @@ public class ProdutoService {
         produtoRepository.deleteById(idProduto);
     }
 
-    public Produto buscar(Long idProduto) {
-        return produtoRepository.findById(idProduto).get();
+    public Produto buscar(Long idForma) {
+        return produtoRepository.findById(idForma).get();
     }
 
     @Query()
-    public List<Produto> buscarPorNome(String nome) {
-        return produtoRepository.buscarPorNome(nome);    }
-
+    public List<Produto> buscarPorDescricao(String descricao) {
+        return produtoRepository.buscarPorDescricao(descricao);
+    }
 }
