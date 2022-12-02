@@ -1,32 +1,36 @@
 package projeto2.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Service;
 import projeto2.models.Categoria;
 import projeto2.repositories.CategoriaRepository;
 
 import java.util.List;
 
+@Service
 public class CategoriaService {
 
     @Autowired
-    private CategoriaRepository produtoRepository;
+    private CategoriaRepository categoriaRepository;
+
+    public List<Categoria> ListarCategorias() {
+        return categoriaRepository.findAll();
+    }
 
     public Categoria salvar(Categoria categoria) {
-        return produtoRepository.save(categoria);
+        return categoriaRepository.save(categoria);
     }
 
     public void deletar(Long idCategoria) {
-        produtoRepository.deleteById(idCategoria);
+        categoriaRepository.deleteById(idCategoria);
     }
 
     public Categoria buscar(Long idCategoria) {
-        return produtoRepository.findById(idCategoria).get();
+        return categoriaRepository.findById(idCategoria).get();
     }
 
-    @Query()
     public List<Categoria> buscarPorDescricao(String descricao) {
-        return produtoRepository.buscarPorDescricao(descricao);
+        return categoriaRepository.buscarPorDescricao(descricao);
     }
 
 }

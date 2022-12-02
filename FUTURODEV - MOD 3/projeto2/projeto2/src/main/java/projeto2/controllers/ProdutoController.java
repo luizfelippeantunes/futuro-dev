@@ -1,5 +1,7 @@
 package projeto2.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import projeto2.services.ProdutoService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Api(tags = "Produtos")
 @RestController
 @RequestMapping(value = "/produto")
 public class ProdutoController {
@@ -19,25 +22,44 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
+    @ApiOperation("Valor total das compras (apenas produtos com status 'true')")
+    @GetMapping(value = "/total")
+    public String totalCompras(){
+        Double total = produtoService.totalCompras();
+        return "O valor total das compras foi de R$ " + total;
+    }
+
+    @ApiOperation("Listar todos os produtos cadastrados")
+    @GetMapping(value = "/lista", produces = "application/json")
+    public ResponseEntity<List<ProdutoRM>> listarProdutos() {
+        List<Produto> produtos = produtoService.ListarProdutos();
+        List<ProdutoRM> produtosRM = toCollectionModel(produtos);
+        return new ResponseEntity<List<ProdutoRM>>(produtosRM, HttpStatus.OK);
+    }
+
+    @ApiOperation("Salvar um produto")
     @PostMapping(value = "/", produces = "application/json")
     public ResponseEntity<ProdutoRM> cadastrar(@RequestBody ProdutoInput produtoInput) {
         Produto produto = produtoService.salvar(toDomainObject(produtoInput));
         return new ResponseEntity<ProdutoRM>(toModel(produto), HttpStatus.CREATED);
     }
 
+    @ApiOperation("Atualizar um produto")
     @PutMapping(value = "/", produces = "application/json")
     public ResponseEntity<ProdutoRM> atualizar(@RequestBody ProdutoInput produtoInput) {
         Produto produto = produtoService.salvar(toDomainObject(produtoInput));
         return new ResponseEntity<ProdutoRM>(toModel(produto), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/")
+    @ApiOperation("Deletar um produto")
+    @DeleteMapping
     @ResponseBody
     public ResponseEntity<String> deletar(@RequestParam Long idProduto) {
         produtoService.deletar(idProduto);
         return new ResponseEntity<String>("Produto deletado com sucesso!", HttpStatus.OK);
     }
 
+    @ApiOperation("Buscar um produto por ID como parâmetro")
     @GetMapping(value = "/", produces = "application/json")
     public ResponseEntity<ProdutoRM> buscarPorId(@RequestParam(name = "id") Long idProduto) {
         Produto produto = produtoService.buscar(idProduto);
@@ -45,6 +67,7 @@ public class ProdutoController {
         return new ResponseEntity<ProdutoRM>(produtoRM, HttpStatus.OK);
     }
 
+    @ApiOperation("Buscar um produto por nome")
     @GetMapping(value = "/buscarPorNome", produces = "application/json")
     public ResponseEntity<List<ProdutoRM>> buscarPorNome(@RequestParam(name = "nome") String nome) {
         List<Produto> produtos = produtoService.buscarPorNome(nome);
@@ -52,6 +75,7 @@ public class ProdutoController {
         return new ResponseEntity<List<ProdutoRM>>(produtosRM, HttpStatus.OK);
     }
 
+    @ApiOperation("Buscar um produto por ID pela URL")
     @GetMapping(value = "/{idProduto}", produces = "application/json")
     public ResponseEntity<ProdutoRM> buscar(@PathVariable(value = "idProduto") Long idProduto) {
         Produto produto = produtoService.buscar(idProduto);

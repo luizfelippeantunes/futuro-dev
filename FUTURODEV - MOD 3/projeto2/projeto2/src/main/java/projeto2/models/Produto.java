@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "produtos_lab")
+@Table(name = "produtos")
 public class Produto implements Serializable {
 
     @Id
@@ -16,8 +16,10 @@ public class Produto implements Serializable {
     @JoinColumn(name = "idCategoria", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_categoria"))
     private Categoria categoria;
 
+    @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false, precision = 2)
     private Double valor;
 
     private boolean status;

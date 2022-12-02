@@ -20,7 +20,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
                 .select() // retornamos um builder para selecionar os endpoints que devem ser expostos
                 .apis(RequestHandlerSelectors.any()) // especificando o que queremos e quais controladores e endpoints que o springfox irá escanear
                 .build() //montagem do sumário (Docket)
-                .apiInfo(metaData()); //carrega o método com
+                .apiInfo(metaData()); //carrega o método metaData
     }
 
     private ApiInfo metaData(){
@@ -28,8 +28,8 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
                 .title("Projeto 2 - API")
                 .description("Projeto 2 - API LabShoppingList")
                 .version("1.0.0")
-                .license("Apache License Version 2.0")
-                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
+                .license("Licenciado por Luiz Felippe Antunes")
+                .licenseUrl("https://github.com/luizfelippeantunes")
                 .build();
     }
 
