@@ -1,0 +1,28 @@
+body{
+  width: 100%;
+}
+
+#display{
+  min-width: 75.4vw;
+  height: 50px;
+}
+
+tr{
+  min-width: 100%;
+  align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  min-width: 300px;
+  font-size: 150%;
+}
+
+.ac {
+  color: red;
+}
+
+table {
+  width: 100%;
+}
